@@ -1,6 +1,6 @@
 <?php
-namespace Tresdadv\MiPrimerCrud\Block;
+namespace Mageplaza\HelloWorld\Block;
 class Index extends \Magento\Framework\View\Element\Template
 {
-    
+
 }

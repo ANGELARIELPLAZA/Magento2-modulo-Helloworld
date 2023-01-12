@@ -1,6 +1,5 @@
 <?php
-
-namespace Tresdadv\MiPrimerCrud\Setup;
+namespace Mageplaza\HelloWorld\Setup;
 
 class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 {
@@ -9,9 +8,9 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 	{
 		$installer = $setup;
 		$installer->startSetup();
-		if (!$installer->tableExists('Tresdadv_MiPrimerCrud_post')) {
+		if (!$installer->tableExists('mageplaza_helloworld_post')) {
 			$table = $installer->getConnection()->newTable(
-				$installer->getTable('Tresdadv_MiPrimerCrud_post')
+				$installer->getTable('mageplaza_helloworld_post')
 			)
 				->addColumn(
 					'post_id',
@@ -68,11 +67,11 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 					'Post Featured Image'
 				)
 				->addColumn(
-					'created_at',
-					\Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-					null,
-					['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT],
-					'Created At'
+						'created_at',
+						\Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
+						null,
+						['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT],
+						'Created At'
 				)->addColumn(
 					'updated_at',
 					\Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
@@ -83,13 +82,13 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 			$installer->getConnection()->createTable($table);
 
 			$installer->getConnection()->addIndex(
-				$installer->getTable('Tresdadv_MiPrimerCrud_post'),
+				$installer->getTable('mageplaza_helloworld_post'),
 				$setup->getIdxName(
-					$installer->getTable('Tresdadv_MiPrimerCrud_post'),
-					['name', 'url_key', 'post_content', 'tags', 'featured_image'],
+					$installer->getTable('mageplaza_helloworld_post'),
+					['name','url_key','post_content','tags','featured_image'],
 					\Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
 				),
-				['name', 'url_key', 'post_content', 'tags', 'featured_image'],
+				['name','url_key','post_content','tags','featured_image'],
 				\Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
 			);
 		}
